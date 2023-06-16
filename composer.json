@@ -1,0 +1,19 @@
+{
+  "name": "piotrpress/dynamic-format",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "description": "This WordPress plugin adds a dynamic format which renders an output of a selected php callback function added via a filter hook.",
+  "homepage": "https://github.com/PiotrPress/wordpress-dynamic-format",
+  "authors": [
+    {
+      "name": "Piotr Niewiadomski",
+      "homepage": "https://piotr.press"
+    }
+  ],
+  "keywords": [
+    "wordpress", "wp", "gutenberg", "format", "dynamic-format", "format-api", "formatting-toolbar-api", "block", "blocks", "dynamic-block", "dynamic-blocks","php-block", "php-blocks", "fse", "full-site-editing"
+  ],
+  "require": {
+    "php": ">=7.4"
+  }
+}
