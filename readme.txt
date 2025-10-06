@@ -16,14 +16,24 @@ This WordPress plugin adds a dynamic [format](https://developer.wordpress.org/bl
 
 = Usage =
 
-Add `piotrpress/dynamic_format/callbacks` filter.
+Add callback functions via `piotrpress/dynamic_format/callbacks` filter:
 
-= Example =
-
-`add_filter( 'piotrpress/dynamic_format/callbacks', function( $callbacks ) {
-     $callbacks[ 'Current date' ] = function( $content ) { return date( 'Y-m-d H:i:s' ); };
+`add_filter( 'piotrpress/dynamic_format/callbacks', function( array $callbacks ) : array {
+     $callbacks[ 'Current date' ] = fn( string $content ) : string => date( 'Y-m-d H:i:s' );
      return $callbacks;
  } );`
+
+ or if you would like to translate the label:
+
+ `php
+ add_filter( 'piotrpress/dynamic_format/callbacks', function( array $callbacks ) : array {
+     $callbacks[ 'current_date' ] = [
+         'label' => __( 'Current date', 'textdomain' ),
+         'value' => fn( string $content ) : string => date( 'Y-m-d H:i:s' );
+     ];
+     return $callbacks;
+ } );
+ `
 
 == Screenshots ==
 

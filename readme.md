@@ -2,22 +2,30 @@
 
 This WordPress plugin adds a dynamic [format](https://developer.wordpress.org/block-editor/how-to-guides/format-api/) which renders an output of a selected php callback function added via a [filter hook](https://developer.wordpress.org/plugins/hooks/filters/).
 
+![Dynamic format in WordPress block editor view](screenshot-1.png)
+
 ## Usage
 
-Add `piotrpress/dynamic_format/callbacks` filter.
-
-## Example
+Add callback functions via `piotrpress/dynamic_format/callbacks` filter:
 
 ```php
-add_filter( 'piotrpress/dynamic_format/callbacks', function( $callbacks ) {
-    $callbacks[ 'Current date' ] = function( $content ) { return date( 'Y-m-d H:i:s' ); };
+add_filter( 'piotrpress/dynamic_format/callbacks', function( array $callbacks ) : array {
+    $callbacks[ 'Current date' ] = fn( string $content ) : string => date( 'Y-m-d H:i:s' );
     return $callbacks;
 } );
 ```
 
-## Screenshot
+or if you would like to translate the label:
 
-![Dynamic format in WordPress block editor view](screenshot-1.png)
+```php
+add_filter( 'piotrpress/dynamic_format/callbacks', function( array $callbacks ) : array {
+    $callbacks[ 'current_date' ] = [
+        'label' => __( 'Current date', 'textdomain' ),
+        'value' => fn( string $content ) : string => date( 'Y-m-d H:i:s' );
+    ];
+    return $callbacks;
+} );
+```
 
 ## Requirements
 
